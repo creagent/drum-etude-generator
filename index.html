@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f5f2eb">
+<title>Ритмика — этюды для барабанов</title>
+<style>
+:root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#242821;background:#f5f2eb;color-scheme:light;--muted:#697064;--line:#dedfd5;--green:#354d3f}*{box-sizing:border-box}body{margin:0}main{max-width:1240px;margin:auto;padding:32px 32px 48px}header{display:flex;justify-content:space-between;align-items:center;padding-bottom:24px;border-bottom:1px solid var(--line)}.brand{font-weight:800;font-size:20px;letter-spacing:-.7px;display:flex;align-items:center;gap:10px}.mark{width:31px;height:31px;border:2px solid var(--green);border-radius:50%;display:grid;place-items:center;color:var(--green)}.tag,.eyebrow{font-size:11px;letter-spacing:1.7px;text-transform:uppercase;font-weight:700;color:var(--muted)}.intro{margin:42px 0 30px}.eyebrow{color:var(--green)}h1{font-size:clamp(32px,5vw,54px);line-height:1.08;letter-spacing:-2px;margin:12px 0 15px;font-weight:650}.intro p{max-width:610px;color:var(--muted);font-size:16px;line-height:1.6;margin:0}.workspace{display:grid;grid-template-columns:260px minmax(0,1fr);gap:28px;align-items:start}.controls{padding:23px;background:#eaece3;border:1px solid #d9ddcf;border-radius:15px}h2{font-size:17px;letter-spacing:-.3px;margin:0}.controls h2{margin-bottom:25px}.field{margin-bottom:22px}label{font-size:13px;font-weight:650;display:block;margin-bottom:8px}.field small{display:block;font-size:12px;line-height:1.5;color:var(--muted);margin-top:7px}input[type=number],select{width:100%;height:45px;border:1px solid #b8bfb1;border-radius:7px;background:#fafbf6;padding:8px 12px;font:inherit;color:inherit}input[type=range]{width:100%;accent-color:var(--green);margin:9px 0}.range-label{display:flex;justify-content:space-between}.range-label output{font-variant-numeric:tabular-nums;color:var(--green)}button{font:inherit;cursor:pointer;border:1px solid var(--line);background:#fffdf8;color:inherit;border-radius:7px;padding:10px 14px;font-size:13px;font-weight:600;min-height:42px}button:hover{background:#e8ece3}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #b98120;outline-offset:3px}.primary{width:100%;background:var(--green);border-color:var(--green);color:white;min-height:48px}.primary:hover{background:#233d2e}.check{display:flex;gap:8px;align-items:center;font-size:12px;font-weight:500;margin:18px 0 0}.check input{accent-color:var(--green);width:16px;height:16px}.sheet{background:#fffdf8;border:1px solid var(--line);border-radius:15px;overflow:hidden;min-width:0}.sheet-header{padding:25px 26px 20px;display:flex;gap:15px;justify-content:space-between;align-items:start;border-bottom:1px solid #ecece3}.sheet-title{font-family:Georgia,serif;font-weight:400;font-size:27px;margin:5px 0 9px}.meta{font-size:12px;color:var(--muted);line-height:1.5}.badge{font-size:14px;background:#f1e5bf;color:#6e572b;padding:7px 11px;border-radius:6px;white-space:nowrap;font-variant-numeric:tabular-nums}.score{padding:14px 25px 22px;display:grid;gap:8px 20px;grid-template-columns:repeat(auto-fit,minmax(min(100%,var(--measure-width,340px)),1fr))}.measure{min-width:0;overflow-x:auto;scrollbar-width:thin}.measure svg{display:block;width:100%;min-width:var(--svg-min);height:auto;color:#242821}.sheet-footer{padding:15px 26px;background:#f8f7f0;border-top:1px solid #ecece3;display:flex;gap:20px;font-size:12px;color:var(--muted);align-items:center;flex-wrap:wrap}.legend{display:flex;gap:7px;align-items:center}.legend svg{width:21px;height:32px;fill:currentColor}.actions{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}.status{font-size:12px;color:var(--muted);min-height:18px;margin-top:13px}.help{font-size:13px;line-height:1.65;margin-top:27px;color:var(--muted)}summary{cursor:pointer;color:#434b3d;font-weight:600}details p{max-width:690px;margin:12px 0}footer{font-size:11px;color:var(--muted);display:flex;justify-content:space-between;gap:15px;border-top:1px solid var(--line);padding-top:20px;margin-top:40px}.count{fill:#84897e;font-family:system-ui,sans-serif;font-size:11px}.hide-counts .count{display:none}
+@media(max-width:800px){main{padding:22px 18px 32px}.workspace{grid-template-columns:1fr;gap:20px}.controls{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:19px}.controls h2{grid-column:1/-1;margin:0}.field{margin:0}.primary{align-self:end}.check{margin:0;align-self:center}.intro{margin:30px 0 25px}.tag{font-size:9px;letter-spacing:1px}.sheet-header{padding:20px}.score{padding:8px 15px 20px}.sheet-footer{padding:14px 20px}}
+@media(max-width:400px){.tag{display:none}.controls{gap:16px 12px}.sheet-title{font-size:24px}h1{letter-spacing:-1.3px}footer{display:block}footer span{display:block;margin-bottom:5px}}
+@media print{@page{size:A4;margin:12mm}body{background:white}main{padding:0;max-width:none}header,.intro,.controls,.actions,.status,.help,footer{display:none}.workspace{display:block}.sheet{border:0;border-radius:0}.sheet-header{padding:0 0 15px}.score{padding:10px 0;display:block}.measure{break-inside:avoid;overflow:visible;margin-bottom:8px}.measure svg{width:100%;min-width:0;max-height:150px}.sheet-footer{background:white}}
+</style>
+</head>
+<body>
+<main>
+<header><div class="brand"><span class="mark" aria-hidden="true">Ⅱ</span>ритмика</div><span class="tag">Маленькая практика · каждый день</span></header>
+<section class="intro"><div class="eyebrow">Этюды для барабанов</div><h1>Сначала прочитай.<br>Потом сыграй.</h1><p>Случайные ритмы для практики на пэде. Задай пульсацию, оставь место тишине — и получи новый этюд.</p></section>
+<div class="workspace">
+<form id="generator" class="controls">
+<h2>Твой ритм</h2>
+<div class="field"><label for="bars">Количество тактов</label><input id="bars" type="number" min="1" max="64" step="1" value="4" required inputmode="numeric"><small>От 1 до 64</small></div>
+<div class="field"><label for="subdivision">Позиций в доле</label><input id="subdivision" type="number" min="2" max="16" step="1" value="3" required inputmode="numeric"><small id="division-hint">3 — триоли</small></div>
+<div class="field"><label for="beats">Размер</label><select id="beats"><option value="4">4/4 · четыре доли</option><option value="3">3/4 · три доли</option><option value="2">2/4 · две доли</option></select><small>Одна доля = четверть</small></div>
+<div class="field"><label class="range-label" for="rests">Вероятность паузы <output id="rest-value" for="rests">30%</output></label><input id="rests" type="range" min="0" max="100" step="5" value="30"><small>Каждая позиция — нота или пауза</small></div>
+<button class="primary" type="submit">Сгенерировать этюд ↗</button>
+<label class="check"><input id="counts" type="checkbox" checked>Подсказки счёта под нотами</label>
+</form>
+<section aria-label="Ритмический этюд">
+<div class="sheet" id="sheet"><div class="sheet-header"><div><div class="eyebrow">Практика чтения</div><h2 class="sheet-title">Ритмический этюд</h2><div class="meta" id="meta"></div></div><span class="badge" id="meter">4/4</span></div><div class="score" id="score"></div><div class="sheet-footer"><span class="legend"><svg viewBox="0 0 24 36" aria-hidden="true"><ellipse cx="8" cy="28" rx="6" ry="4" transform="rotate(-20 8 28)"/><path d="M13 28V5h2v23zM14 5q14 5 4 17q5-10-4-10z"/></svg>Удар</span><span class="legend"><svg viewBox="0 0 24 36" aria-hidden="true"><path d="M17 8L11 31h-2l5-18Q5 20 3 13q-1-5 3-5q4 0 3 5q5 0 8-5z"/></svg>Пауза</span><span>Скобка объединяет одну долю</span></div></div>
+<div class="actions"><button id="print" type="button">Печать / PDF</button><button id="save" type="button">Скачать ноты · SVG</button></div>
+<div class="status" id="status" role="status"></div>
+<details class="help"><summary>Как читать этот этюд</summary><p>Каждая доля длится одну четверть и делится на равные позиции. В каждой позиции нужно либо ударить, либо выдержать паузу той же длительности. Соседние паузы не объединяются: сетка пульса остаётся видимой.</p><p>2 позиции — восьмые; 3 — восьмые триоли; 4 — шестнадцатые; 5 — шестнадцатые квинтоли. Особые деления подписаны отношением: например, 5:4 означает пять шестнадцатых за время четырёх обычных. Для 4 позиций дополнительная цифра не нужна.</p><p>Под нотами указан номер доли, затем номера позиций внутри неё. Это подсказки для ориентации, а не аппликатура. Длинные такты на маленьком экране можно прокрутить вбок.</p><p>Вероятность паузы применяется независимо к каждой позиции, поэтому фактическое число пауз меняется от этюда к этюду. При 0% будут только ноты, при 100% — только паузы.</p></details>
+</section>
+</div>
+<footer><span>Только ты, пэд и немного времени.</span><span>Работает без интернета · без регистрации</span></footer>
+</main>
+<script>
+'use strict';
+const $ = id => document.getElementById(id);
+const form = $('generator');
+let etude = null;
+const names = {2:'восьмые',3:'триоли',4:'шестнадцатые',5:'квинтоли',6:'секстоли',7:'септоли',8:'тридцать вторые'};
+function notation(n) {
+  const base = 2 ** Math.floor(Math.log2(n));
+  return { beams: Math.log2(base), ratio: n === base ? '' : `${n}:${base}` };
+}
+function makeEtude(bars, beats, division, restChance, random = Math.random) {
+  if (!Number.isInteger(bars) || bars < 1 || bars > 64 || ![2,3,4].includes(beats) || !Number.isInteger(division) || division < 2 || division > 16 || !Number.isFinite(restChance) || restChance < 0 || restChance > 1) throw new RangeError('Недопустимые параметры этюда');
+  return {bars, beats, division, restChance, measures: Array.from({length:bars}, () => Array.from({length:beats}, () => Array.from({length:division}, () => random() >= restChance)))};
+}
+function note(x, beams, flagged) {
+  let out = `<ellipse cx="${x}" cy="78" rx="6.4" ry="4.6" transform="rotate(-22 ${x} 78)"/><path d="M${x+5.4} 77V39" fill="none" stroke="currentColor" stroke-width="1.8"/>`;
+  if (flagged) for(let j=0;j<beams;j++) out += `<path d="M${x+5.4} ${39+j*7}q20 8 7 26q7-15-7-18z"/>`;
+  return out;
+}
+function rest(x, beams) {
+  const top = 57 - (beams-1)*5;
+  let out = `<path d="M${x+6} ${top-1}L${x-2} 84" fill="none" stroke="currentColor" stroke-width="2"/>`;
+  for(let j=0;j<beams;j++){
+    const y=top+j*7;
+    out += `<circle cx="${x-4-j*1.7}" cy="${y}" r="3.4"/><path d="M${x-4-j*1.7} ${y+2}Q${x+1} ${y+7} ${x+6-j*1.7} ${y-1}" fill="none" stroke="currentColor" stroke-width="1.7"/>`;
+  }
+  return out;
+}
+function measureDrawing(measure,index,division) {
+  const {beams,ratio} = notation(division);
+  const step=29, beatWidth=division*step+23, width=measure.length*beatWidth+34;
+  let out=`<text x="5" y="17" fill="#7e8577" font-size="10" font-family="system-ui,sans-serif">${String(index+1).padStart(2,'0')}</text>`;
+  measure.forEach((beat,b)=>{
+    const start=23+b*beatWidth, end=start+(division-1)*step+6;
+    if(ratio){
+      const mid=(start+end)/2;
+      out+=`<path d="M${start-7} 30v-6H${mid-17}M${mid+17} 24H${end+7}v6" fill="none" stroke="currentColor" stroke-width="1"/><text x="${mid}" y="28" text-anchor="middle" font-size="12" font-family="Georgia,serif" font-style="italic">${ratio}</text>`;
+    }
+    beat.forEach((hit,i)=>{
+      const x=start+i*step;
+      out+= hit ? note(x,beams,!beat[i-1]&&!beat[i+1]) : rest(x,beams);
+      out+=`<text x="${x}" y="110" text-anchor="middle" class="count"${i===0?' font-weight="700"':''}>${i===0 ? b+1 : '·'+(i+1)}</text>`;
+    });
+    for(let i=0;i<beat.length;i++){
+      if(!beat[i])continue;
+      const from=i;
+      while(i+1<beat.length && beat[i+1])i++;
+      if(i>from)for(let j=0;j<beams;j++)out+=`<path d="M${start+from*step+5.4} ${39+j*7}H${start+i*step+5.4}" fill="none" stroke="currentColor" stroke-width="4"/>`;
+    }
+  });
+  out+=`<path d="M${width-9} 38V89" fill="none" stroke="currentColor" stroke-width="1.2"/>`;
+  if(index===etude.bars-1)out+=`<path d="M${width-4} 38V89" fill="none" stroke="currentColor" stroke-width="3"/>`;
+  return {width, height:125, content:out};
+}
+function render() {
+  const score=$('score');
+  score.replaceChildren();
+  const width=etude.beats*(etude.division*29+23)+34;
+  score.style.setProperty('--measure-width',`${width}px`);
+  score.style.setProperty('--svg-min',`${width}px`);
+  etude.measures.forEach((measure,index)=>{
+    const drawing=measureDrawing(measure,index,etude.division);
+    const wrapper=document.createElement('div');
+    wrapper.className='measure';
+    const description=measure.map((beat,b)=>`Доля ${b+1}: ${beat.map(hit=>hit?'удар':'пауза').join(', ')}`).join('. ');
+    wrapper.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${drawing.width} ${drawing.height}" fill="currentColor" role="img" aria-labelledby="title-${index}"><title id="title-${index}">Такт ${index+1}. ${description}</title>${drawing.content}</svg>`;
+    score.append(wrapper);
+  });
+  $('meter').textContent=`${etude.beats}/4`;
+  $('meta').textContent=`Тактов: ${etude.bars} · ${names[etude.division] || etude.division+' позиций в доле'} · все позиции равны`;
+  const all=etude.measures.flat(2), hits=all.filter(Boolean).length;
+  $('status').textContent=`Готово. Ударов: ${hits}, пауз: ${all.length-hits}.`;
+}
+form.addEventListener('submit',event=>{
+  event.preventDefault();
+  if(!form.reportValidity())return;
+  etude=makeEtude(Number($('bars').value),Number($('beats').value),Number($('subdivision').value),Number($('rests').value)/100);
+  render();
+});
+$('rests').addEventListener('input',()=>{$('rest-value').value=$('rests').value+'%';});
+$('subdivision').addEventListener('input',()=>{
+  const n=Number($('subdivision').value);
+  $('division-hint').textContent=Number.isInteger(n)&&n>=2&&n<=16 ? `${n} — ${names[n] || 'равных позиций в доле'}` : 'Целое число от 2 до 16';
+});
+$('counts').addEventListener('change',()=>{$('sheet').classList.toggle('hide-counts',!$('counts').checked);});
+$('print').addEventListener('click',()=>window.print());
+$('save').addEventListener('click',()=>{
+  const drawings=etude.measures.map((measure,index)=>measureDrawing(measure,index,etude.division));
+  const width=Math.max(620,drawings[0].width+48), height=100+drawings.length*125;
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" fill="#242821" color="#242821"><title>Ритмический этюд</title><style>.count{fill:#84897e;font-family:system-ui,sans-serif;font-size:11px;${$('counts').checked?'':'display:none;'}}</style><rect width="100%" height="100%" fill="#fffdf8"/><text x="24" y="36" font-family="Georgia,serif" font-size="25">Ритмический этюд · ${etude.beats}/4</text><text x="24" y="61" font-family="sans-serif" font-size="12">Тактов: ${etude.bars} · Позиций в доле: ${etude.division} · Одна доля = четверть</text>${drawings.map((d,i)=>`<g transform="translate(24 ${84+i*125})">${d.content}</g>`).join('')}</svg>`;
+  const url=URL.createObjectURL(new Blob([svg],{type:'image/svg+xml;charset=utf-8'}));
+  const link=document.createElement('a');link.href=url;link.download=`rhythm-${etude.beats}-4-${etude.division}.svg`;link.click();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+  $('status').textContent='Файл SVG подготовлен для скачивания.';
+});
+form.requestSubmit();
+</script>
+</body>
+</html>
