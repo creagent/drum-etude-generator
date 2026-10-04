@@ -5,11 +5,12 @@ const assert=require('node:assert/strict');
 const source=fs.readFileSync(path.join(__dirname,'../index.html'),'utf8').match(/<script>([\s\S]*?)<\/script>/)[1];
 const core=vm.createContext({});vm.runInContext(source,core);
 const RhythmPlayer=vm.runInContext('RhythmPlayer',core);
+const quarter=vm.runInContext('QUARTER_TICKS',core);
 const fixture={bars:1,measures:[[
-  {time:0,ticks:24,type:'quarter',rest:true},
-  {time:24,ticks:12,type:'eighth',rest:false},
-  {time:36,ticks:12,type:'eighth',rest:true},
-  {time:48,ticks:48,type:'half',rest:false}
+  {time:0,ticks:quarter,type:'quarter',rest:true},
+  {time:quarter,ticks:quarter/2,type:'eighth',rest:false},
+  {time:quarter*1.5,ticks:quarter/2,type:'eighth',rest:true},
+  {time:quarter*2,ticks:quarter*2,type:'half',rest:false}
 ]]};
 const plan=core.makePlaybackPlan(fixture,60,false);
 assert.deepEqual(Array.from(plan.sounds,s=>s.at),[1,2]);
@@ -25,6 +26,17 @@ const hits=tripletPlan.sounds.filter(s=>s.kind==='drum');
 assert.equal(hits.length,24);
 for(let i=0;i<hits.length;i++)assert.ok(Math.abs(hits[i].at-i/6)<1e-12);
 assert.deepEqual(Array.from(tripletPlan.sounds.filter(s=>s.kind==='accent'),s=>s.at),[0,2]);
+for(const [type,count] of [['quintuplet',5],['sextuplet',6]]) {
+  const etude=core.makeEtude(2,{[type]:{notes:true}});
+  const plan=core.makePlaybackPlan(etude,120,true);
+  const hits=plan.sounds.filter(s=>s.kind==='drum');
+  assert.equal(hits.length,8*count);
+  for(let i=0;i<hits.length;i++)assert.ok(Math.abs(hits[i].at-i/(2*count))<1e-12);
+  assert.equal(plan.duration,4);
+  const silent=core.makeEtude(1,{[type]:{rests:true}});
+  assert.equal(core.makePlaybackPlan(silent,240,false).sounds.length,0);
+  assert.equal(core.makePlaybackPlan(silent,240,true).sounds.length,4);
+}
 const rests=core.makeEtude(1,{half:{rests:true}});
 assert.equal(core.makePlaybackPlan(rests,80,false).sounds.length,0);
 assert.equal(core.makePlaybackPlan(rests,80,true).sounds.length,4);
@@ -71,4 +83,4 @@ stopped.context.currentTime=2;stopped.player.schedule();assert.equal(stopped.sou
 const delayed=environment();delayed.player.play(tripletPlan);delayed.context.currentTime=1;delayed.player.schedule();
 assert.deepEqual(delayed.reasons,['interrupted']);assert.equal(delayed.sources.length,2,'Late hits must not burst');
 const suspended=environment();suspended.player.play(plan);suspended.context.state='suspended';suspended.player.schedule();assert.deepEqual(suspended.reasons,['interrupted']);
-console.log('PASS: note/rest timing, triplets, metronome, synthesis, scheduling, completion, cancellation and interruption.');
+console.log('PASS: note/rest timing, triplets/quintuplets/sextuplets, metronome, synthesis, scheduling, completion, cancellation and interruption.');

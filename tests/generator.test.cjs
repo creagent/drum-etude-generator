@@ -7,10 +7,12 @@ const source = html.match(/<script>([\s\S]*?)<\/script>/)[1];
 const core = vm.createContext({});
 vm.runInContext(source, core);
 const defs = vm.runInContext('DURATIONS', core);
+const quarter = vm.runInContext('QUARTER_TICKS', core);
+const combinationCount = 2 ** (defs.length * 2) - 1;
 let seed=731;
 const random = () => ((seed=(Math.imul(seed,1664525)+1013904223)>>>0)/2**32);
 let tested=0;
-for(let mask=1;mask<1024;mask++) {
+for(let mask=1;mask<=combinationCount;mask++) {
   const selection=Object.fromEntries(defs.map((d,i)=>[d.id,{notes:Boolean(mask&(1<<(i*2))),rests:Boolean(mask&(1<<(i*2+1)))}]));
   const available=defs.filter(d=>selection[d.id].notes||selection[d.id].rests);
   for(const rng of [random,()=>0,()=>0.999999]) {
@@ -23,16 +25,17 @@ for(let mask=1;mask<1024;mask++) {
         assert.equal(event.time,time);
         assert.equal(event.ticks,defs.find(d=>d.id===event.type).ticks*(event.dotted?1.5:1));
         assert.ok(selection[event.type][event.rest?'rests':'notes']);
-        if(event.type==='triplet') {
-          assert.equal(event.tuplet%24,0);
-          assert.ok(event.time>=event.tuplet&&event.time<event.tuplet+24);
+        const definition=defs.find(d=>d.id===event.type);
+        if(definition.tupletCount) {
+          assert.equal(event.tuplet%quarter,0);
+          assert.ok(event.time>=event.tuplet&&event.time<event.tuplet+quarter);
           const group=measure.filter(e=>e.tuplet===event.tuplet);
-          assert.equal(group.length,3);
-          assert.ok(group.every(e=>e.type==='triplet'&&e.ticks===8));
+          assert.equal(group.length,definition.tupletCount);
+          assert.ok(group.every(e=>e.type===event.type&&e.ticks===quarter/definition.tupletCount&&!e.dotted));
         } else assert.equal(event.tuplet,null);
         time+=event.ticks;
       }
-      assert.equal(time,96);
+      assert.equal(time,quarter*4);
       assert.ok(new Set(measure.map(e=>e.type)).size>=Math.min(2,available.length));
       const simplified=core.simplifyMeasure(measure,selection);
       assert.ok(simplified.length<=measure.length);
@@ -43,7 +46,7 @@ for(let mask=1;mask<1024;mask++) {
         assert.ok(selection[event.type][event.rest?'rests':'notes']);
         assert.equal(event.ticks,defs.find(d=>d.id===event.type).ticks*(event.dotted?1.5:1));
       }
-      assert.equal(simplifiedTime,96);
+      assert.equal(simplifiedTime,quarter*4);
       assert.equal(JSON.stringify(core.simplifyMeasure(simplified,selection)),JSON.stringify(simplified));
       const before=core.makePlaybackPlan({bars:1,measures:[measure]},137,true);
       const after=core.makePlaybackPlan({bars:1,measures:[simplified]},137,true);
@@ -66,12 +69,12 @@ assert.deepEqual(Array.from(narrow.rows,r=>r.end-r.start),[2,2,2,2,1]);
 const dense=core.makeEtude(4,{sixteenth:{notes:true}},()=>0);
 assert.equal(core.layoutScore(dense,1200).columns,2);
 const mixed=core.drawMeasure([
-  {type:'eighth',ticks:12,time:0,rest:false,tuplet:null},
-  {type:'sixteenth',ticks:6,time:12,rest:false,tuplet:null},
-  {type:'sixteenth',ticks:6,time:18,rest:false,tuplet:null}
+  {type:'eighth',ticks:quarter/2,time:0,rest:false,tuplet:null},
+  {type:'sixteenth',ticks:quarter/4,time:quarter/2,rest:false,tuplet:null},
+  {type:'sixteenth',ticks:quarter/4,time:quarter*3/4,rest:false,tuplet:null}
 ],150);
 assert.ok(mixed.includes(' 43H'), 'Sixteenths receive their secondary beam');
 const svg=core.scoreSVG(short,4);
 assert.ok(svg.includes('4/4')&&!/NaN|undefined|Infinity/.test(svg));
 assert.ok(!html.includes('id="counts"')&&!html.includes('class="count"'));
-console.log(`PASS: ${tested} measures across all 1023 checkbox combinations; 4/4 totals, vocabulary, tuplets, dotted values, simplification, identical playback, layout and rendering.`);
+console.log(`PASS: ${tested} measures across all ${combinationCount} checkbox combinations; 4/4 totals, vocabulary, tuplets, dotted values, simplification, identical playback, layout and rendering.`);
