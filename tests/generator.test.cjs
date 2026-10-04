@@ -14,27 +14,41 @@ for(let mask=1;mask<1024;mask++) {
   const selection=Object.fromEntries(defs.map((d,i)=>[d.id,{notes:Boolean(mask&(1<<(i*2))),rests:Boolean(mask&(1<<(i*2+1)))}]));
   const available=defs.filter(d=>selection[d.id].notes||selection[d.id].rests);
   for(const rng of [random,()=>0,()=>0.999999]) {
-    const etude=core.makeEtude(3,selection,rng);
+    const etude=core.makeEtude(3,selection,rng,false);
     assert.equal(etude.measures.length,3);
     for(const measure of etude.measures) {
       let time=0;
       for(let i=0;i<measure.length;i++) {
         const event=measure[i];
         assert.equal(event.time,time);
-        assert.equal(event.ticks,defs.find(d=>d.id===event.type).ticks);
+        assert.equal(event.ticks,defs.find(d=>d.id===event.type).ticks*(event.dotted?1.5:1));
         assert.ok(selection[event.type][event.rest?'rests':'notes']);
         if(event.type==='triplet') {
-          assert.equal(event.tuplet%12,0);
-          assert.ok(event.time>=event.tuplet&&event.time<event.tuplet+12);
+          assert.equal(event.tuplet%24,0);
+          assert.ok(event.time>=event.tuplet&&event.time<event.tuplet+24);
           const group=measure.filter(e=>e.tuplet===event.tuplet);
           assert.equal(group.length,3);
-          assert.ok(group.every(e=>e.type==='triplet'&&e.ticks===4));
+          assert.ok(group.every(e=>e.type==='triplet'&&e.ticks===8));
         } else assert.equal(event.tuplet,null);
         time+=event.ticks;
       }
-      assert.equal(time,48);
+      assert.equal(time,96);
       assert.ok(new Set(measure.map(e=>e.type)).size>=Math.min(2,available.length));
-      const drawing=core.drawMeasure(measure,core.measureMinWidth(measure));
+      const simplified=core.simplifyMeasure(measure,selection);
+      assert.ok(simplified.length<=measure.length);
+      assert.deepEqual(Array.from(simplified.filter(e=>!e.rest),e=>e.time),Array.from(measure.filter(e=>!e.rest),e=>e.time));
+      let simplifiedTime=0;
+      for(const event of simplified){
+        assert.equal(event.time,simplifiedTime);simplifiedTime+=event.ticks;
+        assert.ok(selection[event.type][event.rest?'rests':'notes']);
+        assert.equal(event.ticks,defs.find(d=>d.id===event.type).ticks*(event.dotted?1.5:1));
+      }
+      assert.equal(simplifiedTime,96);
+      assert.equal(JSON.stringify(core.simplifyMeasure(simplified,selection)),JSON.stringify(simplified));
+      const before=core.makePlaybackPlan({bars:1,measures:[measure]},137,true);
+      const after=core.makePlaybackPlan({bars:1,measures:[simplified]},137,true);
+      assert.equal(JSON.stringify(before.sounds),JSON.stringify(after.sounds));
+      const drawing=core.drawMeasure(simplified,core.measureMinWidth(simplified));
       assert.ok(!/NaN|undefined|Infinity/.test(drawing));
       tested++;
     }
@@ -49,15 +63,15 @@ assert.deepEqual(Array.from(wide.rows,r=>r.end-r.start),[4,4,1]);
 const narrow=core.layoutScore(short,320);
 assert.equal(narrow.columns,2);
 assert.deepEqual(Array.from(narrow.rows,r=>r.end-r.start),[2,2,2,2,1]);
-const dense=core.makeEtude(4,{sixteenth:{notes:true}});
+const dense=core.makeEtude(4,{sixteenth:{notes:true}},()=>0);
 assert.equal(core.layoutScore(dense,1200).columns,2);
 const mixed=core.drawMeasure([
-  {type:'eighth',ticks:6,time:0,rest:false,tuplet:null},
-  {type:'sixteenth',ticks:3,time:6,rest:false,tuplet:null},
-  {type:'sixteenth',ticks:3,time:9,rest:false,tuplet:null}
+  {type:'eighth',ticks:12,time:0,rest:false,tuplet:null},
+  {type:'sixteenth',ticks:6,time:12,rest:false,tuplet:null},
+  {type:'sixteenth',ticks:6,time:18,rest:false,tuplet:null}
 ],150);
 assert.ok(mixed.includes(' 43H'), 'Sixteenths receive their secondary beam');
 const svg=core.scoreSVG(short,4);
 assert.ok(svg.includes('4/4')&&!/NaN|undefined|Infinity/.test(svg));
 assert.ok(!html.includes('id="counts"')&&!html.includes('class="count"'));
-console.log(`PASS: ${tested} measures across all 1023 checkbox combinations; 4/4 totals, vocabulary, tuplets, variation, layout and rendering.`);
+console.log(`PASS: ${tested} measures across all 1023 checkbox combinations; 4/4 totals, vocabulary, tuplets, dotted values, simplification, identical playback, layout and rendering.`);

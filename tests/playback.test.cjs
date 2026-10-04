@@ -6,10 +6,10 @@ const source=fs.readFileSync(path.join(__dirname,'../index.html'),'utf8').match(
 const core=vm.createContext({});vm.runInContext(source,core);
 const RhythmPlayer=vm.runInContext('RhythmPlayer',core);
 const fixture={bars:1,measures:[[
-  {time:0,ticks:12,type:'quarter',rest:true},
-  {time:12,ticks:6,type:'eighth',rest:false},
-  {time:18,ticks:6,type:'eighth',rest:true},
-  {time:24,ticks:24,type:'half',rest:false}
+  {time:0,ticks:24,type:'quarter',rest:true},
+  {time:24,ticks:12,type:'eighth',rest:false},
+  {time:36,ticks:12,type:'eighth',rest:true},
+  {time:48,ticks:48,type:'half',rest:false}
 ]]};
 const plan=core.makePlaybackPlan(fixture,60,false);
 assert.deepEqual(Array.from(plan.sounds,s=>s.at),[1,2]);

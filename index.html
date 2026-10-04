@@ -30,7 +30,7 @@
 <div class="duration-choice"><p class="duration-name">Триоли</p><label class="choice"><input type="checkbox" name="notes" value="triplet" checked aria-label="Триольные ноты">Ноты</label><label class="choice"><input type="checkbox" name="rests" value="triplet" aria-label="Триольные паузы">Паузы</label></div>
 <div class="duration-choice"><p class="duration-name">Шестнадцатые</p><label class="choice"><input type="checkbox" name="notes" value="sixteenth" checked aria-label="Шестнадцатые ноты">Ноты</label><label class="choice"><input type="checkbox" name="rests" value="sixteenth" checked aria-label="Шестнадцатые паузы">Паузы</label></div>
 </div></fieldset>
-<div class="generate-area"><button class="primary" type="submit">Сгенерировать этюд ↗</button><small id="selection-hint">Используются только отмеченные ноты и паузы.</small></div>
+<div class="generate-area"><button class="primary" type="submit">Сгенерировать этюд ↗</button><small id="selection-hint">Обычные и с точкой. Триоли — по три.</small></div>
 <p class="error" id="error" role="alert" hidden></p>
 </form>
 <section aria-label="Ритмический этюд">
@@ -42,62 +42,114 @@
 <span class="position" id="position" aria-live="off"></span>
 <p class="player-status" id="player-status" role="status">Короткие барабанные удары; метроном отмечает четверти.</p>
 </div>
-<div class="sheet"><div class="sheet-header"><div><div class="eyebrow">Практика чтения</div><h2 class="sheet-title">Ритмический этюд</h2><div class="meta" id="meta"></div></div><span class="badge">4/4</span></div><div class="score"><div id="score-lines"></div></div><div class="sheet-footer"><span>Один такт = четыре четверти</span><span>Скобка с 3 — триоль на одну долю</span></div></div>
+<div class="sheet"><div class="sheet-header"><div><div class="eyebrow">Практика чтения</div><h2 class="sheet-title">Ритмический этюд</h2><div class="meta" id="meta"></div></div><span class="badge">4/4</span></div><div class="score"><div id="score-lines"></div></div><div class="sheet-footer"><span>Один такт = четыре четверти</span><span>Точка добавляет половину длительности</span><span>Скобка с 3 — триоль на одну долю</span></div></div>
 <div class="actions"><button id="print" type="button">Печать / PDF</button><button id="save" type="button">Скачать ноты · SVG</button></div>
 <p class="status" id="status" role="status"></p>
-<details class="help"><summary>Как устроен этюд</summary><p>Нажми «Слушать», чтобы проиграть этюд в выбранном темпе. Каждая нота — один короткий барабанный удар; её длительность определяет время до следующей ноты или паузы. Паузы не звучат. Метроном можно отключить, а громкость — изменить во время игры. «Стоп» останавливает звук; следующий запуск начинается с первого такта.</p><p>В каждом такте сочетаются выбранные длительности: половинная занимает две доли, четвертная — одну, восьмая — половину доли, шестнадцатая — четверть доли. Три восьмые триоли вместе занимают одну долю.</p><p>Галочки для нот и пауз независимы. Можно оставить только ноты, только паузы или смешать их. Если выбрано несколько длительностей, каждый такт содержит хотя бы две разные; все выбранные длительности не обязательно помещаются в один такт.</p><p>Триоли появляются полными группами по три. Внутри группы могут быть ноты и паузы, если отмечены обе галочки. Ноты соединяются рёбрами внутри одной доли. Нотного стана и подсказок счёта нет.</p><p>На широком экране в строке четыре такта, если они помещаются, иначе — два. Строка целиком подстраивается под ширину экрана. Последняя строка может содержать меньше тактов.</p></details>
+<details class="help"><summary>Как устроен этюд</summary><p>Нажми «Слушать», чтобы проиграть этюд в выбранном темпе. Каждая нота — один короткий барабанный удар; её длительность определяет время до следующей ноты или паузы. Паузы не звучат. Метроном можно отключить, а громкость — изменить во время игры. «Стоп» останавливает звук; следующий запуск начинается с первого такта.</p><p>В каждом такте сочетаются выбранные длительности: половинная занимает две доли, четвертная — одну, восьмая — половину доли, шестнадцатая — четверть доли. Три восьмые триоли вместе занимают одну долю.</p><p>Галочки для нот и пауз независимы. Можно оставить только ноты, только паузы или смешать их. Для половинных, четвертных, восьмых и шестнадцатых эта же галочка разрешает вариант с точкой — отдельного выбора не нужно. Точка увеличивает длительность в полтора раза. Генератор сочетает выбранные длительности так, чтобы получился полный такт; после упрощения запись может содержать меньше их видов.</p><p>Соседние паузы объединяются, а нота может поглотить следующую за ней паузу, если так получается меньше знаков. Например, четверть и восьмая пауза превращаются в четверть с точкой. Объединение использует только выбранные длительности и не пересекает тактовые черты или группы триолей. Два отдельных удара никогда не объединяются: их число и моменты звучания сохраняются.</p><p>Триоли появляются полными группами по три. Внутри группы могут быть ноты и паузы, если отмечены обе галочки. Ноты соединяются рёбрами внутри одной доли. Нотного стана и подсказок счёта нет.</p><p>На широком экране в строке четыре такта, если они помещаются, иначе — два. Строка целиком подстраивается под ширину экрана. Последняя строка может содержать меньше тактов.</p></details>
 </section>
 <footer><span>Только ты, пэд и немного времени.</span><span>Работает без интернета · без регистрации</span></footer>
 </main>
 <script>
 'use strict';
-// Twelve integer ticks per quarter keep straight notes and triplets exact.
+// 24 ticks per quarter represent dotted sixteenths and triplets exactly.
+const QUARTER_TICKS = 24;
+const BAR_TICKS = QUARTER_TICKS * 4;
 const DURATIONS = [
-  {id:'half', ticks:24, beams:0, name:'половинная'},
-  {id:'quarter', ticks:12, beams:0, name:'четвертная'},
-  {id:'eighth', ticks:6, beams:1, name:'восьмая'},
-  {id:'triplet', ticks:4, beams:1, name:'восьмая триоль'},
-  {id:'sixteenth', ticks:3, beams:2, name:'шестнадцатая'}
+  {id:'half', ticks:48, beams:0, name:'половинная'},
+  {id:'quarter', ticks:24, beams:0, name:'четвертная'},
+  {id:'eighth', ticks:12, beams:1, name:'восьмая'},
+  {id:'triplet', ticks:8, beams:1, name:'восьмая триоль'},
+  {id:'sixteenth', ticks:6, beams:2, name:'шестнадцатая'}
 ];
-const BAR_TICKS = 48;
-function makeEtude(bars, selection, random = Math.random) {
+function durationVariants(duration) {
+  const plain={...duration,dotted:false};
+  return duration.id==='triplet' ? [plain] : [plain,{...duration,ticks:duration.ticks*1.5,dotted:true}];
+}
+function makeEtude(bars, selection, random = Math.random, simplify = true) {
   if (!Number.isInteger(bars) || bars < 1 || bars > 64) throw new RangeError('Количество тактов должно быть от 1 до 64.');
-  const choices = DURATIONS.filter(d => selection[d.id]?.notes || selection[d.id]?.rests);
-  if (!choices.length) throw new RangeError('Отметь хотя бы одну длительность ноты или паузы.');
-  const minimumTypes = Math.min(2, choices.length);
+  const families = DURATIONS.filter(d => selection[d.id]?.notes || selection[d.id]?.rests);
+  if (!families.length) throw new RangeError('Отметь хотя бы одну длительность ноты или паузы.');
+  const choices=families.flatMap((d,i)=>durationVariants(d).map(v=>({...v,family:i})));
+  const minimumTypes = Math.min(2, families.length);
   const memo = new Map();
-  const blockLength = d => d.id === 'triplet' ? 12 : d.ticks;
-  const fits = (d, time) => time + blockLength(d) <= BAR_TICKS && (d.id !== 'triplet' || time % 12 === 0);
+  const blockLength = d => d.id === 'triplet' ? QUARTER_TICKS : d.ticks;
+  const fits = (d, time) => time + blockLength(d) <= BAR_TICKS && (d.id !== 'triplet' || time % QUARTER_TICKS === 0);
   const bitCount = mask => { let n=0; for(;mask;mask&=mask-1)n++; return n; };
-  // Only choose steps from which a complete, varied measure remains possible.
   function canFinish(time, mask) {
     if (time === BAR_TICKS) return bitCount(mask) >= minimumTypes;
     const key = time * 32 + mask;
-    if (!memo.has(key)) memo.set(key, choices.some((d,i) => fits(d,time) && canFinish(time+blockLength(d),mask|(1<<i))));
+    if (!memo.has(key)) memo.set(key, choices.some(d => fits(d,time) && canFinish(time+blockLength(d),mask|(1<<d.family))));
     return memo.get(key);
   }
   const measures = Array.from({length:bars}, () => {
     let time=0, mask=0;
     const events=[];
     while (time < BAR_TICKS) {
-      const candidates=choices.map((d,i)=>({d,i,weight:mask&(1<<i)?1:3})).filter(({d,i})=>fits(d,time)&&canFinish(time+blockLength(d),mask|(1<<i)));
+      const candidates=choices.filter(d=>fits(d,time)&&canFinish(time+blockLength(d),mask|(1<<d.family))).map(d=>({d,weight:(mask&(1<<d.family)?1:3)*(d.dotted?0.55:1)}));
       let pick=random()*candidates.reduce((sum,c)=>sum+c.weight,0);
-      const chosen=candidates.find(c=>(pick-=c.weight)<0) || candidates[candidates.length-1];
-      const {d,i}=chosen, tuplet=d.id==='triplet'?time:null;
+      const {d}=candidates.find(c=>(pick-=c.weight)<0) || candidates[candidates.length-1];
+      const tuplet=d.id==='triplet'?time:null;
       const count=d.id==='triplet'?3:1;
       for(let j=0;j<count;j++) {
         const options=selection[d.id];
         const rest=options.rests && (!options.notes || random()<0.3);
-        events.push({type:d.id,ticks:d.ticks,time,rest:Boolean(rest),tuplet});
+        events.push({type:d.id,ticks:d.ticks,dotted:d.dotted,time,rest:Boolean(rest),tuplet});
         time+=d.ticks;
       }
-      mask|=1<<i;
+      mask|=1<<d.family;
     }
-    return events;
+    return simplify?simplifyMeasure(events,selection):events;
   });
   return {bars, measures};
 }
-function eventSpace(event) { return 19 + 13 * Math.sqrt(event.ticks / 12); }
+function simplifyMeasure(measure,selection) {
+  const palette=kind=>DURATIONS.filter(d=>d.id!=='triplet'&&selection[d.id]?.[kind]).flatMap(durationVariants).sort((a,b)=>b.ticks-a.ticks);
+  const notes=palette('notes'),rests=palette('rests');
+  const restMemo=new Map([[0,[]]]);
+  // Minimum-symbol spelling of silence using only enabled rest families.
+  function spellRests(ticks) {
+    if(restMemo.has(ticks))return restMemo.get(ticks);
+    let best=null;
+    for(const duration of rests)if(duration.ticks<=ticks) {
+      const tail=spellRests(ticks-duration.ticks);
+      if(tail && (!best || tail.length+1<best.length))best=[duration,...tail];
+    }
+    restMemo.set(ticks,best);
+    return best;
+  }
+  const eventFrom=(duration,time,rest)=>({type:duration.id,ticks:duration.ticks,dotted:duration.dotted,time,rest,tuplet:null});
+  function placeRests(durations,time) {
+    return durations.map(duration=>{const event=eventFrom(duration,time,true);time+=duration.ticks;return event;});
+  }
+  const result=[];
+  for(let i=0;i<measure.length;) {
+    // Triplets retain their three positions and bracket; don't cross a tuplet.
+    if(measure[i].type==='triplet'){result.push({...measure[i++]});continue;}
+    const first=measure[i];
+    let end=i+1;
+    while(end<measure.length && measure[end].rest && measure[end].type!=='triplet')end++;
+    const block=measure.slice(i,end);
+    const ticks=block.reduce((sum,event)=>sum+event.ticks,0);
+    let best=block;
+    if(first.rest) {
+      const spelling=spellRests(ticks);
+      if(spelling && spelling.length<best.length)best=placeRests(spelling,first.time);
+    } else {
+      const originalTail=spellRests(ticks-first.ticks);
+      if(originalTail && originalTail.length+1<best.length)best=[{...first},...placeRests(originalTail,first.time+first.ticks)];
+      // Absorb following silence, never an attack. This is percussion notation:
+      // a longer note still triggers one short drum hit at the original onset.
+      for(const duration of notes)if(duration.ticks>=first.ticks && duration.ticks<=ticks) {
+        const tail=spellRests(ticks-duration.ticks);
+        if(tail && tail.length+1<best.length)best=[eventFrom(duration,first.time,false),...placeRests(tail,first.time+duration.ticks)];
+      }
+    }
+    result.push(...best.map(event=>({...event})));
+    i=end;
+  }
+  return result;
+}
+function eventSpace(event) { return 19 + 13 * Math.sqrt(event.ticks / QUARTER_TICKS) + (event.dotted?7:0); }
 function measureMinWidth(measure) { return 26 + measure.reduce((sum,e)=>sum+eventSpace(e),0); }
 function noteGlyph(x,event,flagged) {
   const beams=DURATIONS.find(d=>d.id===event.type).beams;
@@ -122,10 +174,10 @@ function drawMeasure(measure,width) {
   let cursor=15;
   const xs=measure.map(e=>{const x=cursor;cursor+=eventSpace(e)*(width-26)/weight;return x;});
   const beams=measure.map(e=>DURATIONS.find(d=>d.id===e.type).beams);
-  const connected=(i,j)=>j>=0&&j<measure.length&&!measure[i].rest&&!measure[j].rest&&beams[i]>0&&beams[j]>0&&Math.floor(measure[i].time/12)===Math.floor(measure[j].time/12)&&measure[i].tuplet===measure[j].tuplet;
+  const connected=(i,j)=>j>=0&&j<measure.length&&!measure[i].rest&&!measure[j].rest&&beams[i]>0&&beams[j]>0&&Math.floor(measure[i].time/QUARTER_TICKS)===Math.floor(measure[j].time/QUARTER_TICKS)&&measure[i].tuplet===measure[j].tuplet;
   let out='';
   measure.forEach((event,i)=>{
-    out+=`<g data-event="${i}">${event.rest?restGlyph(xs[i],event.type):noteGlyph(xs[i],event,!connected(i,i-1)&&!connected(i,i+1))}</g>`;
+    out+=`<g data-event="${i}">${event.rest?restGlyph(xs[i],event.type):noteGlyph(xs[i],event,!connected(i,i-1)&&!connected(i,i+1))}${event.dotted?`<circle class="augmentation-dot" cx="${xs[i]+12}" cy="${event.rest?62:71}" r="1.9"/>`:""}</g>`;
     if(connected(i,i+1))out+=`<path d="M${xs[i]+5} 36H${xs[i+1]+5}" fill="none" stroke="currentColor" stroke-width="3.7"/>`;
     if(!event.rest&&beams[i]===2&&(connected(i,i-1)||connected(i,i+1))){
       if(connected(i,i+1)&&beams[i+1]===2)out+=`<path d="M${xs[i]+5} 43H${xs[i+1]+5}" fill="none" stroke="currentColor" stroke-width="3.7"/>`;
@@ -168,7 +220,7 @@ function scoreSVG(etude,columns) {
 }
 function makePlaybackPlan(etude,bpm,metronome=false) {
   if(!Number.isInteger(bpm)||bpm<40||bpm>240)throw new RangeError('Темп должен быть целым числом от 40 до 240.');
-  const secondsPerTick=60/bpm/12;
+  const secondsPerTick=60/bpm/QUARTER_TICKS;
   const sounds=[],positions=[];
   etude.measures.forEach((measure,bar)=>measure.forEach((event,index)=>{
     const at=(bar*BAR_TICKS+event.time)*secondsPerTick;
@@ -298,7 +350,7 @@ if(typeof document!=='undefined') {
     layout=layoutScore(etude,Math.max(200,width));
     lines.replaceChildren();
     layout.rows.forEach(row=>{
-      const description=etude.measures.slice(row.start,row.end).map((m,i)=>`Такт ${row.start+i+1}: ${m.map(e=>`${DURATIONS.find(d=>d.id===e.type).name}${e.rest?' пауза':' нота'}`).join(', ')}`).join('. ');
+      const description=etude.measures.slice(row.start,row.end).map((m,i)=>`Такт ${row.start+i+1}: ${m.map(e=>`${DURATIONS.find(d=>d.id===e.type).name}${e.rest?' пауза':' нота'}${e.dotted?' с точкой':''}`).join(', ')}`).join('. ');
       const wrapper=document.createElement('div');
       wrapper.className='score-line';
       wrapper.tabIndex=0;
