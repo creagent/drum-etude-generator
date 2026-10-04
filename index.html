@@ -53,7 +53,7 @@
 <p>Триоль, квинтоль и секстоль занимают одну четвертную долю и состоят из 3, 5 и 6 равных позиций. Каждая позиция может быть нотой или паузой — вся группа не обязана состоять из ударов. Полностью звучащая группа тоже может случайно получиться. Если выключить паузы для длительности, останутся только ноты.</p>
 <p>После генерации соседние паузы объединяются, а нота может поглотить следующую за ней паузу. Например, шестнадцатая нота и шестнадцатая пауза превращаются в восьмую. Для упрощения доступны половинные, четвертные, восьмые и шестнадцатые независимо от галочек. Два отдельных удара не объединяются; моменты звучания сохраняются. Объединение не пересекает тактовые черты и группы триолей, квинтолей и секстолей.</p>
 <p>Галочка «С точкой» разрешает только восьмые с точкой — при генерации и объединении. Такие восьмые занимают три четверти доли. У других длительностей точек нет. Из-за случайного выбора и объединения знаков итоговая доля пауз может отличаться от значения ползунка.</p>
-<p>«Слушать» проигрывает короткие барабанные удары в выбранном темпе. Паузы молчат; метроном отмечает четверти. «Стоп» завершает воспроизведение. «Скачать PDF» сохраняет этюд на страницах A4, а SVG — одним векторным файлом. На широком экране в строке четыре такта, если они помещаются, иначе — два.</p>
+<p>«Слушать» проигрывает короткие барабанные удары в выбранном темпе. Паузы молчат; метроном отмечает четверти. «Стоп» завершает воспроизведение. «Скачать PDF» сохраняет этюд на страницах A4, а SVG — одним векторным файлом. На телефоне в строке один такт. На широком экране — четыре, если они помещаются, иначе два.</p>
 </details>
 </section>
 <footer><span>Только ты, пэд и немного времени.</span><span>Работает без интернета · без регистрации</span></footer>
@@ -422,18 +422,19 @@ if(typeof document!=='undefined') {
   window.addEventListener('pagehide',stopPlayback);
   function renderScore(width=lines.clientWidth) {
     if(!etude)return;
-    layout=layoutScore(etude,Math.max(200,width));
+    const mobileColumns=!printing&&window.matchMedia('(max-width:700px)').matches?1:undefined;
+    layout=layoutScore(etude,Math.max(200,width),mobileColumns);
     lines.replaceChildren();
     layout.rows.forEach(row=>{
       const description=etude.measures.slice(row.start,row.end).map((m,i)=>`Такт ${row.start+i+1}: ${m.map(e=>`${DURATIONS.find(d=>d.id===e.type).name}${e.rest?' пауза':' нота'}${e.dotted?' с точкой':''}`).join(', ')}`).join('. ');
       const wrapper=document.createElement('div');
       wrapper.className='score-line';
       wrapper.tabIndex=0;
-      wrapper.setAttribute('aria-label',`Такты ${row.start+1}–${row.end}`);
+      wrapper.setAttribute('aria-label',row.end-row.start===1?`Такт ${row.start+1}`:`Такты ${row.start+1}–${row.end}`);
       wrapper.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${row.width} ${row.height}" fill="currentColor" role="img" aria-labelledby="row-${row.start}"><title id="row-${row.start}">${description}</title>${row.content}</svg>`;
       lines.append(wrapper);
     });
-    $('meta').textContent=`Тактов: ${etude.bars} · ${layout.columns} такта в строке`;
+    $('meta').textContent=`Тактов: ${etude.bars} · ${layout.columns} ${layout.columns===1?'такт':'такта'} в строке`;
   }
   form.addEventListener('submit',event=>{
     event.preventDefault();
