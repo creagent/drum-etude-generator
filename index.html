@@ -10,10 +10,11 @@
 *{box-sizing:border-box}body{margin:0}main{max-width:1320px;margin:auto;padding:28px 32px 40px}header{display:flex;justify-content:space-between;align-items:center;padding-bottom:22px;border-bottom:1px solid var(--line)}.brand{font-weight:800;font-size:20px;letter-spacing:-.7px;display:flex;align-items:center;gap:10px}.mark{width:31px;height:31px;border:2px solid var(--green);border-radius:50%;display:grid;place-items:center;color:var(--green)}.tag,.eyebrow{font-size:11px;letter-spacing:1.7px;text-transform:uppercase;font-weight:700;color:var(--muted)}.intro{margin:30px 0 25px}.eyebrow{color:var(--green)}h1{font-size:clamp(30px,4vw,46px);line-height:1.1;letter-spacing:-1.7px;margin:10px 0 12px;font-weight:650}.intro p{color:var(--muted);font-size:15px;line-height:1.6;margin:0}
 .controls{display:grid;grid-template-columns:160px minmax(0,1fr) 190px;gap:25px;align-items:center;padding:24px;background:#eaece3;border:1px solid #d9ddcf;border-radius:15px;margin-bottom:25px}h2{font-size:17px;letter-spacing:-.3px;margin:0}label{font-size:13px;font-weight:650;display:block;margin-bottom:8px}small{display:block;font-size:12px;line-height:1.5;color:var(--muted);margin-top:7px}input[type=number]{width:100%;height:45px;border:1px solid #b8bfb1;border-radius:7px;background:#fafbf6;padding:8px 12px;font:inherit;color:inherit}input[type=checkbox]{accent-color:var(--green);width:17px;height:17px;margin:0;flex-shrink:0}button{font:inherit;cursor:pointer;border:1px solid var(--line);background:#fffdf8;color:inherit;border-radius:7px;padding:10px 14px;font-size:13px;font-weight:600;min-height:42px}button:hover{background:#e8ece3}button:focus-visible,input:focus-visible,summary:focus-visible,.score-line:focus-visible{outline:3px solid #b98120;outline-offset:3px}.primary{width:100%;background:var(--green);border-color:var(--green);color:white;min-height:48px}.primary:hover{background:#233d2e}fieldset{margin:0;border:0;padding:0;min-width:0}.palette>legend{font-size:13px;font-weight:650;margin-bottom:12px}.duration-options{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.duration-choice{background:#f6f7f0;border:1px solid #d3d8ca;border-radius:8px;padding:12px 10px}.duration-name{font-size:12px;font-weight:650;margin:0 0 10px;white-space:nowrap}.choice{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:500;min-height:30px;margin:0;cursor:pointer}.generate-area small{margin-top:10px}.error{grid-column:1/-1;color:#9a3427;font-size:13px;margin:0}.error[hidden]{display:none}
 .sheet{background:#fffdf8;border:1px solid var(--line);border-radius:15px;overflow:hidden;min-width:0}.sheet-header{padding:22px 26px 18px;display:flex;gap:15px;justify-content:space-between;align-items:center;border-bottom:1px solid #ecece3}.sheet-title{font-family:Georgia,serif;font-weight:400;font-size:27px;margin:5px 0 8px}.meta{font-size:12px;color:var(--muted);line-height:1.5}.badge{font-family:Georgia,serif;font-size:23px;background:#f1e5bf;color:#6e572b;padding:8px 12px;border-radius:6px;white-space:nowrap}.score{padding:18px 24px 14px}.score-line{margin:4px 0 16px}.score-line svg{display:block;width:100%;height:auto;color:#242821}.sheet-footer{padding:14px 26px;background:#f8f7f0;border-top:1px solid #ecece3;display:flex;gap:22px;font-size:12px;color:var(--muted);align-items:center;flex-wrap:wrap}.actions{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}.status{font-size:12px;color:var(--muted);min-height:18px;margin:12px 0 0}.help{font-size:13px;line-height:1.65;margin-top:22px;color:var(--muted)}summary{cursor:pointer;color:#434b3d;font-weight:600}details p{max-width:760px;margin:12px 0}footer{font-size:11px;color:var(--muted);display:flex;justify-content:space-between;gap:15px;border-top:1px solid var(--line);padding-top:20px;margin-top:30px}
+.player{display:flex;align-items:center;gap:16px 22px;flex-wrap:wrap;padding:16px 20px;background:#fffdf8;border:1px solid var(--line);border-radius:12px;margin-bottom:18px}.transport{display:flex;gap:8px}.play-button{background:var(--green);border-color:var(--green);color:white;min-width:115px}.play-button:hover{background:#233d2e}button:disabled{opacity:.45;cursor:default}.tempo-control{display:flex;align-items:center;gap:9px}.tempo-control label{margin:0}.tempo-control input{width:76px;height:42px}.tempo-control span{font-size:11px;color:var(--muted)}.volume-control{display:flex;align-items:center;gap:8px;font-size:12px;margin:0;font-weight:500}.volume-control input{width:85px;accent-color:var(--green)}.player-status{width:100%;font-size:12px;color:var(--muted);margin:0}.position{font-size:12px;font-variant-numeric:tabular-nums;color:var(--green)}.active-measure>.playback-bar{opacity:1}.active-event{color:#ad6500;fill:currentColor}
 @media(max-width:1100px){.controls{grid-template-columns:140px minmax(0,1fr);gap:20px}.generate-area{grid-column:1/-1;display:flex;align-items:center;gap:18px}.primary{width:auto;min-width:210px}.generate-area small{margin:0}}
 @media(max-width:700px){main{padding:20px 16px 30px}.controls{grid-template-columns:1fr;padding:18px;gap:18px}.field{display:grid;grid-template-columns:1fr 95px;align-items:center;gap:5px 12px}.field label{margin:0}.field small{grid-column:1/-1;margin:0}.duration-options{grid-template-columns:repeat(3,minmax(0,1fr))}.generate-area{display:block}.primary{width:100%}.generate-area small{margin-top:9px}.intro{margin:25px 0 20px}.tag{font-size:9px;letter-spacing:1px}.sheet-header{padding:18px}.score{padding:12px 12px 5px}.sheet-footer{padding:12px 18px;gap:7px 16px}.sheet-title{font-size:24px}}
 @media(max-width:400px){.tag{display:none}.duration-options{gap:8px}.duration-choice{padding:10px 7px}.duration-name{font-size:11px}.choice{font-size:12px;gap:5px}footer{display:block}footer span{display:block;margin-bottom:5px}}
-@media print{@page{size:A4;margin:12mm}body{background:white}main{padding:0;max-width:none}header,.intro,.controls,.actions,.status,.help,footer{display:none}.sheet{border:0;border-radius:0}.sheet-header{padding:0 0 15px}.score{padding:10px 0}.score-line{break-inside:avoid;overflow:visible;margin:5px 0 14px}.score-line svg{width:100%;min-width:0!important}.sheet-footer{background:white}}
+@media print{@page{size:A4;margin:12mm}body{background:white}main{padding:0;max-width:none}header,.intro,.controls,.player,.actions,.status,.help,footer{display:none}.sheet{border:0;border-radius:0}.sheet-header{padding:0 0 15px}.score{padding:10px 0}.score-line{break-inside:avoid;overflow:visible;margin:5px 0 14px}.score-line svg{width:100%;min-width:0!important}.sheet-footer{background:white}}
 </style>
 </head>
 <body>
@@ -33,10 +34,18 @@
 <p class="error" id="error" role="alert" hidden></p>
 </form>
 <section aria-label="Ритмический этюд">
+<div class="player" role="group" aria-label="Воспроизведение этюда">
+<div class="transport"><button class="play-button" id="play" type="button">▶ Слушать</button><button id="stop" type="button" disabled>■ Стоп</button></div>
+<div class="tempo-control"><label for="tempo">Темп</label><input id="tempo" type="number" min="40" max="240" step="1" value="80" required inputmode="numeric"><span>BPM<br>четверть / мин</span></div>
+<label class="choice"><input id="metronome" type="checkbox" checked>Метроном</label>
+<label class="volume-control" for="volume">Громкость<input id="volume" type="range" min="0" max="100" value="60"></label>
+<span class="position" id="position" aria-live="off"></span>
+<p class="player-status" id="player-status" role="status">Короткие барабанные удары; метроном отмечает четверти.</p>
+</div>
 <div class="sheet"><div class="sheet-header"><div><div class="eyebrow">Практика чтения</div><h2 class="sheet-title">Ритмический этюд</h2><div class="meta" id="meta"></div></div><span class="badge">4/4</span></div><div class="score"><div id="score-lines"></div></div><div class="sheet-footer"><span>Один такт = четыре четверти</span><span>Скобка с 3 — триоль на одну долю</span></div></div>
 <div class="actions"><button id="print" type="button">Печать / PDF</button><button id="save" type="button">Скачать ноты · SVG</button></div>
 <p class="status" id="status" role="status"></p>
-<details class="help"><summary>Как устроен этюд</summary><p>В каждом такте сочетаются выбранные длительности: половинная занимает две доли, четвертная — одну, восьмая — половину доли, шестнадцатая — четверть доли. Три восьмые триоли вместе занимают одну долю.</p><p>Галочки для нот и пауз независимы. Можно оставить только ноты, только паузы или смешать их. Если выбрано несколько длительностей, каждый такт содержит хотя бы две разные; все выбранные длительности не обязательно помещаются в один такт.</p><p>Триоли появляются полными группами по три. Внутри группы могут быть ноты и паузы, если отмечены обе галочки. Ноты соединяются рёбрами внутри одной доли. Нотного стана и подсказок счёта нет.</p><p>На широком экране в строке четыре такта, если они помещаются, иначе — два. Строка целиком подстраивается под ширину экрана. Последняя строка может содержать меньше тактов.</p></details>
+<details class="help"><summary>Как устроен этюд</summary><p>Нажми «Слушать», чтобы проиграть этюд в выбранном темпе. Каждая нота — один короткий барабанный удар; её длительность определяет время до следующей ноты или паузы. Паузы не звучат. Метроном можно отключить, а громкость — изменить во время игры. «Стоп» останавливает звук; следующий запуск начинается с первого такта.</p><p>В каждом такте сочетаются выбранные длительности: половинная занимает две доли, четвертная — одну, восьмая — половину доли, шестнадцатая — четверть доли. Три восьмые триоли вместе занимают одну долю.</p><p>Галочки для нот и пауз независимы. Можно оставить только ноты, только паузы или смешать их. Если выбрано несколько длительностей, каждый такт содержит хотя бы две разные; все выбранные длительности не обязательно помещаются в один такт.</p><p>Триоли появляются полными группами по три. Внутри группы могут быть ноты и паузы, если отмечены обе галочки. Ноты соединяются рёбрами внутри одной доли. Нотного стана и подсказок счёта нет.</p><p>На широком экране в строке четыре такта, если они помещаются, иначе — два. Строка целиком подстраивается под ширину экрана. Последняя строка может содержать меньше тактов.</p></details>
 </section>
 <footer><span>Только ты, пэд и немного времени.</span><span>Работает без интернета · без регистрации</span></footer>
 </main>
@@ -116,7 +125,7 @@ function drawMeasure(measure,width) {
   const connected=(i,j)=>j>=0&&j<measure.length&&!measure[i].rest&&!measure[j].rest&&beams[i]>0&&beams[j]>0&&Math.floor(measure[i].time/12)===Math.floor(measure[j].time/12)&&measure[i].tuplet===measure[j].tuplet;
   let out='';
   measure.forEach((event,i)=>{
-    out+=event.rest?restGlyph(xs[i],event.type):noteGlyph(xs[i],event,!connected(i,i-1)&&!connected(i,i+1));
+    out+=`<g data-event="${i}">${event.rest?restGlyph(xs[i],event.type):noteGlyph(xs[i],event,!connected(i,i-1)&&!connected(i,i+1))}</g>`;
     if(connected(i,i+1))out+=`<path d="M${xs[i]+5} 36H${xs[i+1]+5}" fill="none" stroke="currentColor" stroke-width="3.7"/>`;
     if(!event.rest&&beams[i]===2&&(connected(i,i-1)||connected(i,i+1))){
       if(connected(i,i+1)&&beams[i+1]===2)out+=`<path d="M${xs[i]+5} 43H${xs[i+1]+5}" fill="none" stroke="currentColor" stroke-width="3.7"/>`;
@@ -143,7 +152,7 @@ function layoutScore(etude,availableWidth,forcedColumns) {
     const end=Math.min(etude.bars,start+columns);
     for(let i=start;i<end;i++){
       const offset=(i-start)*measureWidth;
-      content+=`<g transform="translate(${offset} 0)">${drawMeasure(etude.measures[i],measureWidth)}</g>`;
+      content+=`<g data-measure="${i}" transform="translate(${offset} 0)"><rect class="playback-bar" x="2" y="12" width="${measureWidth-7}" height="80" rx="5" fill="#f4ecd2" opacity="0"/>${drawMeasure(etude.measures[i],measureWidth)}</g>`;
       const x=offset+measureWidth-4;
       content+=`<path d="M${x} 35V85" fill="none" stroke="currentColor" stroke-width="1.1"/>`;
       if(i===etude.bars-1)content+=`<path d="M${x+3} 35V85" fill="none" stroke="currentColor" stroke-width="2.5"/>`;
@@ -157,11 +166,133 @@ function scoreSVG(etude,columns) {
   const width=layout.width+48,height=96+layout.rows.length*112;
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" fill="#242821" color="#242821"><title>Ритмический этюд, ${etude.bars} тактов, 4/4</title><rect width="100%" height="100%" fill="#fffdf8"/><text x="24" y="35" font-family="Georgia,serif" font-size="25">Ритмический этюд · 4/4</text><text x="24" y="60" font-family="sans-serif" font-size="12">Тактов: ${etude.bars}</text>${layout.rows.map((r,i)=>`<g transform="translate(24 ${78+i*112})">${r.content}</g>`).join('')}</svg>`;
 }
+function makePlaybackPlan(etude,bpm,metronome=false) {
+  if(!Number.isInteger(bpm)||bpm<40||bpm>240)throw new RangeError('Темп должен быть целым числом от 40 до 240.');
+  const secondsPerTick=60/bpm/12;
+  const sounds=[],positions=[];
+  etude.measures.forEach((measure,bar)=>measure.forEach((event,index)=>{
+    const at=(bar*BAR_TICKS+event.time)*secondsPerTick;
+    positions.push({at,end:at+event.ticks*secondsPerTick,bar,index});
+    if(!event.rest)sounds.push({at,kind:'drum'});
+  }));
+  if(metronome)for(let beat=0;beat<etude.bars*4;beat++)sounds.push({at:beat*60/bpm,kind:beat%4===0?'accent':'click'});
+  sounds.sort((a,b)=>a.at-b.at);
+  return {sounds,positions,duration:etude.bars*240/bpm,bars:etude.bars};
+}
+function makeSoundBuffer(context,kind) {
+  const duration=kind==='drum'?0.11:0.035;
+  const buffer=context.createBuffer(1,Math.ceil(context.sampleRate*duration),context.sampleRate);
+  const data=buffer.getChannelData(0);
+  let previous=0;
+  for(let i=0;i<data.length;i++) {
+    const t=i/context.sampleRate,attack=Math.min(1,t/0.0015);
+    if(kind==='drum') {
+      const noise=Math.random()*2-1;
+      data[i]=attack*((noise-previous)*0.24*Math.exp(-t*60)+Math.sin(2*Math.PI*170*t)*0.4*Math.exp(-t*45));
+      previous=noise;
+    } else data[i]=attack*Math.sin(2*Math.PI*(kind==='accent'?1760:1320)*t)*0.32*Math.exp(-t*150);
+  }
+  return buffer;
+}
+class RhythmPlayer {
+  constructor(context,hooks={},timers={setInterval:(fn,ms)=>setInterval(fn,ms),clearInterval:id=>clearInterval(id),requestAnimationFrame:fn=>requestAnimationFrame(fn),cancelAnimationFrame:id=>cancelAnimationFrame(id)}) {
+    this.context=context;this.hooks=hooks;this.timers=timers;this.playing=false;this.sources=new Set();
+    this.gain=context.createGain();this.gain.gain.value=0.6;this.gain.connect(context.destination);
+    this.buffers=Object.fromEntries(['drum','click','accent'].map(kind=>[kind,makeSoundBuffer(context,kind)]));
+  }
+  setVolume(value) { this.gain.gain.setTargetAtTime(Math.max(0,Math.min(1,value)),this.context.currentTime,0.01); }
+  play(plan) {
+    this.stop();
+    this.plan=plan;this.startTime=this.context.currentTime+0.08;this.nextSound=0;this.visualIndex=0;this.playing=true;
+    this.interval=this.timers.setInterval(()=>this.schedule(),25);
+    this.schedule();this.animate();
+  }
+  schedule() {
+    if(!this.playing)return;
+    if(this.context.state!=='running'){this.stop('interrupted');return;}
+    const now=this.context.currentTime;
+    if(now>=this.startTime+this.plan.duration){this.stop('ended');return;}
+    while(this.nextSound<this.plan.sounds.length) {
+      const sound=this.plan.sounds[this.nextSound],when=this.startTime+sound.at;
+      if(when>now+0.15)break;
+      // If the tab was suspended, stop instead of playing missed hits in a burst.
+      if(when<now-0.04){this.stop('interrupted');return;}
+      const source=this.context.createBufferSource();
+      source.buffer=this.buffers[sound.kind];source.connect(this.gain);
+      source.onended=()=>{this.sources.delete(source);source.disconnect();};
+      this.sources.add(source);source.start(when);this.nextSound++;
+    }
+  }
+  animate() {
+    if(!this.playing)return;
+    const elapsed=this.context.currentTime-this.startTime;
+    if(elapsed>=0) {
+      while(this.visualIndex+1<this.plan.positions.length && this.plan.positions[this.visualIndex+1].at<=elapsed)this.visualIndex++;
+      this.hooks.onPosition?.(this.plan.positions[this.visualIndex]);
+    }
+    this.frame=this.timers.requestAnimationFrame(()=>this.animate());
+  }
+  stop(reason='stopped') {
+    const wasPlaying=this.playing;this.playing=false;
+    this.timers.clearInterval(this.interval);this.timers.cancelAnimationFrame(this.frame);
+    for(const source of this.sources){source.onended=null;try{source.stop();}catch{}source.disconnect();}
+    this.sources.clear();
+    if(wasPlaying)this.hooks.onStop?.(reason);
+  }
+}
 // Browser interface. All rhythm and drawing functions above also run without a DOM.
 if(typeof document!=='undefined') {
   const $=id=>document.getElementById(id);
   const form=$('generator'), lines=$('score-lines');
   let etude=null, layout=null, printing=false;
+  let audio=null,player=null,startVersion=0,activeGlyph=null,activeMeasure=null,lastPosition=null;
+  function playbackControls(busy) {
+    $('play').disabled=busy;$('stop').disabled=!busy;$('tempo').disabled=busy;$('metronome').disabled=busy;
+  }
+  function clearHighlight() {
+    activeGlyph?.classList.remove('active-event');activeMeasure?.classList.remove('active-measure');
+    activeGlyph=null;activeMeasure=null;lastPosition=null;$('position').textContent='';
+  }
+  function paintPosition(position) {
+    if(!position)return;
+    if(activeGlyph?.isConnected && lastPosition?.bar===position.bar && lastPosition?.index===position.index)return;
+    activeGlyph?.classList.remove('active-event');activeMeasure?.classList.remove('active-measure');
+    activeMeasure=lines.querySelector(`[data-measure="${position.bar}"]`);
+    activeGlyph=activeMeasure?.querySelector(`[data-event="${position.index}"]`);
+    activeMeasure?.classList.add('active-measure');activeGlyph?.classList.add('active-event');
+    lastPosition=position;$('position').textContent=`Такт ${position.bar+1} из ${etude.bars}`;
+  }
+  function stopped(reason) {
+    playbackControls(false);clearHighlight();
+    $('player-status').textContent=reason==='ended'?'Этюд сыгран. Можно слушать снова.':reason==='interrupted'?'Воспроизведение прервано. Нажми «Слушать», чтобы начать заново.':'Воспроизведение остановлено.';
+  }
+  function stopPlayback() {
+    startVersion++;player?.stop();playbackControls(false);clearHighlight();
+  }
+  $('play').addEventListener('click',async()=>{
+    if(!$('tempo').reportValidity())return;
+    const version=++startVersion;
+    playbackControls(true);$('player-status').textContent='Подготовка звука…';
+    try {
+      if(!audio || audio.state==='closed') {
+        const AudioContext=window.AudioContext||window.webkitAudioContext;
+        if(!AudioContext)throw new Error('Этот браузер не поддерживает звук. Открой приложение в Safari, Chrome или Firefox.');
+        audio=new AudioContext();
+        player=new RhythmPlayer(audio,{onPosition:paintPosition,onStop:stopped});
+        audio.addEventListener('statechange',()=>{if(player.playing&&audio.state!=='running')player.stop('interrupted');});
+      }
+      await audio.resume();
+      if(version!==startVersion)return;
+      if(audio.state!=='running')throw new Error('Не удалось включить звук. Попробуй нажать «Слушать» ещё раз.');
+      player.setVolume(Number($('volume').value)/100);
+      player.play(makePlaybackPlan(etude,Number($('tempo').value),$('metronome').checked));
+      $('player-status').textContent='Играет этюд. Текущая нота или пауза подсвечена.';
+    }catch(error){if(version===startVersion){stopPlayback();$('player-status').textContent=error.message||'Не удалось включить звук.';}}
+  });
+  $('stop').addEventListener('click',()=>{stopPlayback();$('player-status').textContent='Воспроизведение остановлено.';});
+  $('volume').addEventListener('input',()=>player?.setVolume(Number($('volume').value)/100));
+  document.addEventListener('visibilitychange',()=>{if(document.hidden){const busy=$('play').disabled;stopPlayback();if(busy)$('player-status').textContent='Воспроизведение остановлено при смене вкладки.';}});
+  window.addEventListener('pagehide',stopPlayback);
   function renderScore(width=lines.clientWidth) {
     if(!etude)return;
     layout=layoutScore(etude,Math.max(200,width));
@@ -183,6 +314,7 @@ if(typeof document!=='undefined') {
     const selection=Object.fromEntries(DURATIONS.map(d=>[d.id,{notes:form.querySelector(`input[name="notes"][value="${d.id}"]`).checked,rests:form.querySelector(`input[name="rests"][value="${d.id}"]`).checked}]));
     try{etude=makeEtude(Number($('bars').value),selection);}catch(error){$('error').textContent=error.message;$('error').hidden=false;return;}
     $('error').hidden=true;
+    stopPlayback();$('player-status').textContent='Новый этюд готов к прослушиванию.';
     renderScore();
     const all=etude.measures.flat(), rests=all.filter(e=>e.rest).length;
     $('status').textContent=`Этюд готов. Нот: ${all.length-rests}, пауз: ${rests}.`;
@@ -193,7 +325,7 @@ if(typeof document!=='undefined') {
     const width=entries[0].contentRect.width;
     if(!printing && Math.abs(width-observedWidth)>1){observedWidth=width;renderScore(width);}
   }).observe(lines);
-  window.addEventListener('beforeprint',()=>{printing=true;renderScore(720);});
+  window.addEventListener('beforeprint',()=>{stopPlayback();printing=true;renderScore(720);});
   window.addEventListener('afterprint',()=>{printing=false;renderScore();});
   $('print').addEventListener('click',()=>window.print());
   $('save').addEventListener('click',()=>{
