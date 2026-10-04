@@ -37,7 +37,7 @@ for(const [type,count] of [['quintuplet',5],['sextuplet',6]]) {
   assert.equal(core.makePlaybackPlan(silent,240,false).sounds.length,0);
   assert.equal(core.makePlaybackPlan(silent,240,true).sounds.length,4);
 }
-const rests=core.makeEtude(1,{half:{rests:true}});
+const rests=core.makeEtude(1,{eighth:{rests:true}});
 assert.equal(core.makePlaybackPlan(rests,80,false).sounds.length,0);
 assert.equal(core.makePlaybackPlan(rests,80,true).sounds.length,4);
 for(const bpm of [0,39,241,80.5,NaN])assert.throws(()=>core.makePlaybackPlan(fixture,bpm),/Темп/);

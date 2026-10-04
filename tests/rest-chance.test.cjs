@@ -5,7 +5,7 @@ const assert = require('node:assert/strict');
 const html = fs.readFileSync(path.join(__dirname, '../index.html'), 'utf8');
 const core = vm.createContext({});
 vm.runInContext(html.match(/<script>([\s\S]*?)<\/script>/)[1], core);
-const definitions = vm.runInContext('DURATIONS', core);
+const definitions = vm.runInContext('GENERATION_DURATIONS', core);
 const barTicks = vm.runInContext('BAR_TICKS', core);
 const all = Object.fromEntries(definitions.map(d => [d.id, {notes:true, rests:true}]));
 const seeded = () => {
@@ -51,4 +51,18 @@ const restTime = chance => core.makeEtude(64, disjoint, chance, seeded(), false)
 assert.equal(restTime(0), 0);
 assert.ok(restTime(0.99) > restTime(0.01));
 
-console.log('PASS: shared rest probability 0–99%, all seven families, tuplets, checkbox restrictions, disjoint selections, complete bars and preserved attacks.');
+// Regression: initial form settings used to disable all tuplet rests.
+const inputs=Array.from(html.matchAll(/<input\b[^>]*>/g),match=>match[0]);
+const defaults=Object.fromEntries(definitions.map(d=>[d.id,Object.fromEntries(['notes','rests'].map(kind=>[
+  kind,inputs.some(input=>input.includes(`name="${kind}"`)&&input.includes(`value="${d.id}"`)&&/\bchecked\b/.test(input))
+]))]));
+const defaultMeasures=core.makeEtude(64,defaults,0.3,seeded(),false).measures;
+for(const type of ['triplet','quintuplet','sextuplet']) {
+  assert.ok(defaultMeasures.some(measure=>measure.some(event=>{
+    if(event.type!==type)return false;
+    const group=measure.filter(e=>e.tuplet===event.tuplet);
+    return group.some(e=>e.rest)&&group.some(e=>!e.rest);
+  })),`${type} must produce mixed note/rest groups with the initial UI settings`);
+}
+
+console.log('PASS: shared rest probability 0–99%, all five families, tuplets, checkbox restrictions, disjoint selections, complete bars and preserved attacks.');

@@ -5,7 +5,7 @@ const assert = require('node:assert/strict');
 const html = fs.readFileSync(path.join(__dirname, '../index.html'), 'utf8');
 const core = vm.createContext({TextEncoder});
 vm.runInContext(html.match(/<script>([\s\S]*?)<\/script>/)[1], core);
-for (const type of ['half', 'sixteenth', 'quintuplet', 'sextuplet']) {
+for (const type of ['eighth', 'sixteenth', 'quintuplet', 'sextuplet']) {
   for (const bars of [1, 8, 31, 64]) {
     const etude = core.makeEtude(bars, {[type]:{notes:true}}, 0, () => 0);
     const pages = core.scorePDFPages(etude);
