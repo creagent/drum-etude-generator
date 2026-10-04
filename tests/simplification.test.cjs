@@ -48,7 +48,7 @@ assert.equal((glyphs.match(/class="augmentation-dot"/g)||[]).length,2);
 assert.ok(!/NaN|undefined|Infinity/.test(core.scoreSVG({bars:1,measures:[simplified]},2)));
 let state=981;
 const random=()=>((state=(Math.imul(state,1664525)+1013904223)>>>0)/2**32);
-const sample=core.makeEtude(64,all,random,false).measures.flat();
+const sample=core.makeEtude(64,all,0.3,random,false).measures.flat();
 for(const type of ['half','quarter','eighth','sixteenth']) {
   assert.ok(sample.some(e=>e.type===type&&e.dotted&&!e.rest),`Dotted ${type} notes must be generated`);
   assert.ok(sample.some(e=>e.type===type&&!e.dotted),`Plain ${type} remains available`);
@@ -56,6 +56,6 @@ for(const type of ['half','quarter','eighth','sixteenth']) {
 assert.ok(sample.every(e=>Number.isInteger(e.ticks)));
 assert.ok(sample.filter(e=>e.tuplet!=null).every(e=>!e.dotted));
 assert.ok(!/type="checkbox"[^>]*(?:dotted|точк)/.test(html));
-const generated=core.makeEtude(8,all,()=>0.999999);
+const generated=core.makeEtude(8,all,0.3,()=>0.999999);
 assert.ok(generated.measures.every(m=>m.reduce((sum,e)=>sum+e.ticks,0)===quarter*4));
 console.log('PASS: screenshot example, rest merging, note extension, preserved attacks, selected vocabulary, dotted glyphs and dotted generation.');

@@ -16,7 +16,7 @@ for(let mask=1;mask<=combinationCount;mask++) {
   const selection=Object.fromEntries(defs.map((d,i)=>[d.id,{notes:Boolean(mask&(1<<(i*2))),rests:Boolean(mask&(1<<(i*2+1)))}]));
   const available=defs.filter(d=>selection[d.id].notes||selection[d.id].rests);
   for(const rng of [random,()=>0,()=>0.999999]) {
-    const etude=core.makeEtude(3,selection,rng,false);
+    const etude=core.makeEtude(3,selection,0.3,rng,false);
     assert.equal(etude.measures.length,3);
     for(const measure of etude.measures) {
       let time=0;
@@ -59,14 +59,14 @@ for(let mask=1;mask<=combinationCount;mask++) {
 }
 assert.throws(()=>core.makeEtude(1,{}),/хотя бы одну/);
 for(const bars of [0,65,1.5,NaN])assert.throws(()=>core.makeEtude(bars,{quarter:{notes:true}}),/Количество/);
-const short=core.makeEtude(9,{half:{notes:true}},random);
+const short=core.makeEtude(9,{half:{notes:true}},0.3,random);
 const wide=core.layoutScore(short,1200);
 assert.equal(wide.columns,4);
 assert.deepEqual(Array.from(wide.rows,r=>r.end-r.start),[4,4,1]);
 const narrow=core.layoutScore(short,320);
 assert.equal(narrow.columns,2);
 assert.deepEqual(Array.from(narrow.rows,r=>r.end-r.start),[2,2,2,2,1]);
-const dense=core.makeEtude(4,{sixteenth:{notes:true}},()=>0);
+const dense=core.makeEtude(4,{sixteenth:{notes:true}},0.3,()=>0);
 assert.equal(core.layoutScore(dense,1200).columns,2);
 const mixed=core.drawMeasure([
   {type:'eighth',ticks:quarter/2,time:0,rest:false,tuplet:null},
